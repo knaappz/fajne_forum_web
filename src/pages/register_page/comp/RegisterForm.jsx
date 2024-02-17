@@ -11,7 +11,6 @@ function LoginForm() {
                 <input type="text" name="password" />
                 <button type="submit">Utwórz konto</button>
                 <p>Masz już konto? <Link to="/loginpage">Wróć do logowania.</Link></p>
-
             </div>
             
         </section>
