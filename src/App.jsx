@@ -6,24 +6,25 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import NotFoundPage from './pages/NotFoundPage'
 
 const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <HomePage/>,
-      errorElement: <NotFoundPage/>
-    },
-    {
-      path: '/loginpage',
-      element: <LoginPage/>,
-      errorElement: <NotFoundPage/>
-  
-    },
-    {
-      path: '/registerpage',
-      element: <RegisterPage/>,
-      errorElement: <NotFoundPage/>
-  
-    }
-  ])
+  {
+    path: '/',
+    element: <HomePage/>,
+    errorElement: <NotFoundPage/>
+  },
+  {
+    path: '/LoginPage', // zmiana z '/loginpage' na '/LoginPage'
+    element: <LoginPage/>,
+    errorElement: <NotFoundPage/>
+
+  },
+  {
+    path: '/RegisterPage', // zmiana z '/registerpage' na '/RegisterPage'
+    element: <RegisterPage/>,
+    errorElement: <NotFoundPage/>
+
+  }
+])
+
 
 function App() {
   return (
