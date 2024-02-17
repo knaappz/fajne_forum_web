@@ -2,7 +2,7 @@ import Navbar from '/src/pages/components/header/Navbar'
 import Footer from '/src/pages/components/footer/Footer'
 import RegisterForm from './comp/RegisterForm'
 
-function RegsiterPage() {
+function RegisterPage() {
     return(
         <section>
             <Navbar/>
@@ -14,4 +14,4 @@ function RegsiterPage() {
     )
 }
 
-export default RegsiterPage;
+export default RegisterPage;
