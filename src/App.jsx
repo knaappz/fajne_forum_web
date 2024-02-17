@@ -7,7 +7,7 @@ import NotFoundPage from './pages/NotFoundPage'
 
 const router = createBrowserRouter([
     {
-      path: '/',
+      path: '/home',
       element: <HomePage/>,
       errorElement: <NotFoundPage/>
     },
