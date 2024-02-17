@@ -10,7 +10,7 @@ function LoginForm() {
                 <label>Hasło:</label>
                 <input type="text" name="password" />
                 <button type="submit">Zaloguj</button>
-                <p>Nie masz konta? <Link to="/registerpage">Załóż teraz!</Link></p>
+                <p>Nie masz konta? <Link to='/registerpage'>Załóż teraz!</Link></p>
             </div>
             
         </section>
