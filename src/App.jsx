@@ -12,13 +12,13 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage/>
   },
   {
-    path: '/LoginPage', // zmiana z '/loginpage' na '/LoginPage'
+    path: '/LoginPage',
     element: <LoginPage/>,
     errorElement: <NotFoundPage/>
 
   },
   {
-    path: '/RegisterPage', // zmiana z '/registerpage' na '/RegisterPage'
+    path: '/RegisterPage', 
     element: <RegisterPage/>,
     errorElement: <NotFoundPage/>
 
