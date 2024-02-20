@@ -1,7 +1,7 @@
 import './style.css'
 import Navbar from '/src/pages/components/header/Navbar'
 import Footer from '/src/pages/components/footer/Footer'
-import LoginForm from './comp/LoginForm'
+import LoginForm from '/src/pages/components/LoginForm/LoginForm'
 
 
 function LoginPage() {

@@ -1,7 +1,7 @@
 import React from 'react'
-import HomePage from './pages/home_page/HomePage'
-import LoginPage from './pages/login_page/Login'
-import RegisterPage from './pages/register_page/Register'
+import HomePage from './pages/Home/HomePage'
+import LoginPage from './pages/Login/Login'
+import RegisterPage from './pages/Register/Register'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import NotFoundPage from './pages/NotFoundPage'
 
