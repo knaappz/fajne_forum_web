@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
+import { auth } from "/src/firebase/config.js";
+import { useState } from "react";
 
 function LoginForm() {
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [loginType, setLoginType] = useState('login');
+
+    console.log(auth);
+
     return(
         <section id='mainlogin'>
             <div className="login-form">
