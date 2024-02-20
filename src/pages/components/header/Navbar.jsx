@@ -5,7 +5,6 @@ import './navbar.css'
 function Navbar() {
     return(
         <section id='navigation'>
-            {/* logo */}
             <FajneForumLogo/>
             <Links/>
         </section>
