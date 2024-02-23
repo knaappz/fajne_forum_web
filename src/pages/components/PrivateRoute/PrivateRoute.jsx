@@ -1,23 +1,14 @@
-// plik PrivateRoute.jsx
-
 import React from 'react';
-import { Route, Navigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
-// Załóżmy, że masz funkcję, która sprawdza, czy użytkownik jest zalogowany
-// Możesz ją zaimportować lub zaimplementować samodzielnie
-import { isUserLoggedIn } from './utils/auth';
+export default function PrivateRoutes() {
+    const token = localStorage.getItem("token");
+    const navigate = useNavigate();
 
-const PrivateRoute = ({ element, path }) => {
-  return (
-    <Route
-      path={path}
-      element={isUserLoggedIn() ? (
-        element
-      ) : (
-        <Navigate to="/login" replace />
-      )}
-    />
-  );
-};
+    if (!token) {
+        navigate('/'); // przekierowanie użytkownika do strony logowania, jeśli nie ma tokena
+        return null; 
+    }
 
-export default PrivateRoute;
+    return <Outlet />; 
+}

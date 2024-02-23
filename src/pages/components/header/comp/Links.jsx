@@ -1,15 +1,21 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
 
-function Links(){
+function Links() {
+    const navigate = useNavigate();
 
-    return(
-        <div className="links-navi">       
-            <Link to=''> <p>Kategorie</p>  </Link>     
-            <Link to=''> <p>Moje opinie</p>  </Link>     
-            <Link to=''> <p>Konto</p>  </Link> 
-            <Link to='/'>  <p><b>Wyloguj</b></p>   </Link>    
+    const handleLogout = () => {
+        
+        navigate("/");
+    };
+
+    return (
+        <div className="links-navi">
+            <Link to=''> <p>Kategorie</p>  </Link>
+            <Link to=''> <p>Moje opinie</p>  </Link>
+            <Link to=''> <p>Konto</p>  </Link>
+            <p onClick={handleLogout}><b>Wyloguj</b></p>
         </div>
-    )
+    );
 }
 
 export default Links;

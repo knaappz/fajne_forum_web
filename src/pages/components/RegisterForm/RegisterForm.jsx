@@ -20,12 +20,25 @@ function LoginForm() {
 
         createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
         .then((userCredential) => {
+            // Pobierz token dostępu użytkownika
+            const token = userCredential.user.accessToken;
+
+            // Pobierz dane użytkownika
+            const user = {
+                uid: userCredential.user.uid,
+                email: userCredential.user.email
+                // Możesz dodać inne informacje o użytkowniku, jeśli są dostępne
+            };
+
+            // Zapisz token oraz dane użytkownika w localStorage
+            localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(user));
+
             console.log(userCredential.user);
-            navigate('/home')
+            navigate('/home');
         })
         .catch((error) => {
-            setError(error.message)
-
+            setError(error.message);
         });
     }
 
