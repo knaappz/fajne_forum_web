@@ -6,7 +6,8 @@
 }
 
 .login-form {
-    min-width: 20rem;
+    width: 20rem;
+    min-width: 15rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -21,4 +22,14 @@ button {
     color: orange;
     font-weight: 300;
     cursor: pointer;
+}
+
+.error {
+    color: red;
+    font-style: italic;
+    font-size: .9rem;
+}
+
+.backNreset p {
+    margin: 0;
 }

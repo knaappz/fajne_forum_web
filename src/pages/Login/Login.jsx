@@ -7,7 +7,6 @@ import LoginForm from '/src/pages/components/LoginForm/LoginForm'
 function LoginPage() {
     return(
         <section>
-            <Navbar/>
             <LoginForm/>
             <Footer/>
         </section>

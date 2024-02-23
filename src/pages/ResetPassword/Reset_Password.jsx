@@ -1,12 +1,12 @@
 import Navbar from '/src/pages/components/header/Navbar'
 import Footer from '/src/pages/components/footer/Footer'
-import RegisterForm from '/src/pages/components/RegisterForm/RegisterForm'
+import ResetForm from '/src/pages/components/ResetForm/ResetForm'
 
-
-function RegisterPage() {
+function ResetPassword() {
     return(
         <section>
-            <RegisterForm/>
+            <Navbar/>
+            <ResetForm/>
             <Footer/>
         </section>
         
@@ -14,4 +14,4 @@ function RegisterPage() {
     )
 }
 
-export default RegisterPage;
+export default ResetPassword;

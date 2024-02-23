@@ -1,16 +1,57 @@
 import { Link } from "react-router-dom";
+import { auth } from "/src/firebase/config.js";
+import { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { setUser } from "../../../data/usersSlice";
 
 function LoginForm() {
+    const [isLoading, setIsLoading] = useState(false);
+    const [loginType, setLoginType] = useState('login');
+    const [userCredentials, setUserCredentials] = useState({});
+    const [error, setError] = useState('');
+
+    function handleCredentials(e) {
+        setUserCredentials({...userCredentials, [e.target.name]:e.target.value});
+    }
+
+    function handleSignup(e) {
+        e.preventDefault();
+        setError('')
+
+        createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
+        .then((userCredential) => {
+            console.log(userCredential.user);
+        })
+        .catch((error) => {
+            setError(error.message)
+
+        });
+    }
+
     return(
         <section id='mainlogin'>
             <div className="login-form">
                 <h3>Wypełnij dane:</h3>
+
                 <label>Email:</label>
-                <input type="text" name="email" />
+                <input onChange={(e)=>{handleCredentials(e)}} type="text" name="email" />
+
                 <label>Hasło:</label>
-                <input type="text" name="password" />
-                <button type="submit">Utwórz konto</button>
-                <p>Masz już konto? <Link to="/loginpage">Wróć do logowania.</Link></p>
+                <input onChange={(e)=>{handleCredentials(e)}} type="password" name="password" />
+
+                <button onClick={(e)=>{handleSignup(e)}} type="submit">Utwórz konto</button>
+
+                {
+                 error &&
+                 <div className="error">
+                    {error}
+                </div>
+                }
+                
+
+                <div className="backNreset">
+                    <p>Masz już konto? <Link to="/">Wróć do logowania</Link></p>
+                </div>
             </div>
             
         </section>
