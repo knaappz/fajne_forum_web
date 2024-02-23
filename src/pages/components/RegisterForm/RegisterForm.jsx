@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "/src/firebase/config.js";
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { setUser } from "../../../data/usersSlice";
 
 function LoginForm() {
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [loginType, setLoginType] = useState('login');
     const [userCredentials, setUserCredentials] = useState({});
@@ -21,6 +21,7 @@ function LoginForm() {
         createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
         .then((userCredential) => {
             console.log(userCredential.user);
+            navigate('/home')
         })
         .catch((error) => {
             setError(error.message)

@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "/src/firebase/config.js";
 import { useState } from "react";
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
 
+
 function LoginForm() {
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [loginType, setLoginType] = useState('login');
     const [userCredentials, setUserCredentials] = useState({});
@@ -20,6 +22,7 @@ function LoginForm() {
         signInWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
         .then((userCredential) => {
             console.log(userCredential.user);
+            navigate('/home');
         })
         .catch((error) => {
             setError(error.message)
@@ -36,7 +39,7 @@ function LoginForm() {
     return(
         <section id='mainlogin'>
             <div className="login-form">
-                <h3>Witaj ponownie!</h3>
+                <h3>Witaj!</h3>
                 <label>Email:</label>
                 <input onChange={(e)=>{handleCredentials(e)}} type="text" name="email" />
 

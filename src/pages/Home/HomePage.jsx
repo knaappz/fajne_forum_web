@@ -7,6 +7,9 @@ function HomePage() {
   return (
     <section>
       <Navbar/>
+      {/* Konto */}
+      {/* Kategorie */}
+      {/* Moje opinie */}
       <MainContent/>
       <Footer/>
     </section>

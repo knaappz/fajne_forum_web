@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom"
 
 export default function NotFoundPage() {
-    return <div>Dupa, nie ma takiej strony...
-
-        <Link to='/'>Strona główna</Link>
+    return <div id="nopage">Dupa, nie ma takiej strony... <br></br> <Link to='/'>Strona główna</Link>
     </div>;
 }
