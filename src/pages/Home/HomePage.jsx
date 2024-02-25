@@ -1,7 +1,7 @@
 import './Home.css'
 import Navbar from '../components/header/Navbar'
 import MainContent from '../components/MainContent/MainContent'
-import Footer from '../components/Footer/Footer'
+import Footer from '../components/footer/Footer'
 
 function HomePage() {
   return (
