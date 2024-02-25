@@ -1,0 +1,29 @@
+#nopagesection {
+    height: 100vh;
+    background-color: #fff;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center
+
+
+}
+
+.nopage {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center
+}
+
+.nopage img {
+    width: 30%;
+    opacity: .5;
+}
+
+.nopage a {
+    font-size: 1.5rem;
+    text-decoration: none;
+}

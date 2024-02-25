@@ -1,6 +1,5 @@
 import './style.css'
-import Navbar from '/src/pages/components/header/Navbar'
-import Footer from '/src/pages/components/footer/Footer'
+import Footer from '/src/pages/components/Footer/Footer'
 import LoginForm from '/src/pages/components/LoginForm/LoginForm'
 
 

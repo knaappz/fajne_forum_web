@@ -1,5 +1,4 @@
-import Navbar from '/src/pages/components/header/Navbar'
-import Footer from '/src/pages/components/footer/Footer'
+import Footer from '/src/pages/components/Footer/Footer'
 import RegisterForm from '/src/pages/components/RegisterForm/RegisterForm'
 
 

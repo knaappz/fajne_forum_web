@@ -1,75 +1,69 @@
 import { Link, useNavigate } from "react-router-dom";
-import { auth } from "/src/firebase/config.js";
-import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useState, useEffect } from "react";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../../../firebase/config";
 
-function LoginForm() {
-    const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(false);
-    const [loginType, setLoginType] = useState('login');
-    const [userCredentials, setUserCredentials] = useState({});
+function RegisterForm() {
+    const [registerEmail, setRegisterEmail] = useState('');
+    const [registerPassword, setRegisterPassword] = useState('');
+    const [user, setUser] = useState({});
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
-    function handleCredentials(e) {
-        setUserCredentials({...userCredentials, [e.target.name]:e.target.value});
-    }
+    const navigate = useNavigate();
 
-    function handleSignup(e) {
-        e.preventDefault();
-        setError('')
-
-        createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
-        .then((userCredential) => {
-            // Pobierz token dostępu użytkownika
-            const token = userCredential.user.accessToken;
-
-            // Pobierz dane użytkownika
-            const user = {
-                uid: userCredential.user.uid,
-                email: userCredential.user.email
-                // Możesz dodać inne informacje o użytkowniku, jeśli są dostępne
-            };
-
-            // Zapisz token oraz dane użytkownika w localStorage
-            localStorage.setItem('token', token);
-            localStorage.setItem('user', JSON.stringify(user));
-
-            console.log(userCredential.user);
-            navigate('/home');
-        })
-        .catch((error) => {
-            setError(error.message);
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            setLoading(false); 
         });
-    }
+        return () => unsubscribe();
+    }, []);
 
-    return(
+    const handleRegister = async () => {
+        setError('')
+        try {
+            const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
+            navigate('/home')
+            console.log(user);
+        } catch (error) {
+            setError(error.message);
+        }
+    };
+
+    const handlelogout = async () => {
+        await signOut(auth);
+    };
+
+    return (
         <section id='mainlogin'>
             <div className="login-form">
-                <h3>Wypełnij dane:</h3>
+                {!loading && user?.email && (
+                    <h3>Aktualnie zalogowany: <span>{user?.email}</span></h3>
 
-                <label>Email:</label>
-                <input onChange={(e)=>{handleCredentials(e)}} type="text" name="email" />
+                )}
+                <h3>Utwórz konto:</h3>
 
-                <label>Hasło:</label>
-                <input onChange={(e)=>{handleCredentials(e)}} type="password" name="password" />
-
-                <button onClick={(e)=>{handleSignup(e)}} type="submit">Utwórz konto</button>
-
-                {
-                 error &&
-                 <div className="error">
-                    {error}
-                </div>
-                }
-                
+                <input onChange={(event) => { setRegisterEmail(event.target.value) }} type="text" name="email" placeholder="Email"/>
+                <input onChange={(event) => { setRegisterPassword(event.target.value) }} type="password" name="password" placeholder="Hasło"/>
+                {error && (
+                    <div className="error">
+                        {error}
+                    </div>
+                )}
+               
+                <button onClick={handleRegister} type="submit">Utwórz</button>
 
                 <div className="backNreset">
                     <p>Masz już konto? <Link to="/">Wróć do logowania</Link></p>
                 </div>
+
+                {user && (
+                <button className="signout" onClick={handlelogout}>Wyloguj</button>
+                )}      
             </div>
-            
         </section>
     )
 }
 
-export default LoginForm;
+export default RegisterForm;

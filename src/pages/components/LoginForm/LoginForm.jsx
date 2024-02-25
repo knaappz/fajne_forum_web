@@ -1,66 +1,69 @@
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth } from "/src/firebase/config.js";
-import { useState } from "react";
-import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
-
+import { auth } from "../../../firebase/config";
+import { onAuthStateChanged, signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from "firebase/auth"
+import Navbar from "../Header/Navbar"
 
 function LoginForm() {
-    const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(false);
-    const [loginType, setLoginType] = useState('login');
-    const [userCredentials, setUserCredentials] = useState({});
+    const [loginEmail, setLoginEmail] = useState('');
+    const [loginPassword, setLoginPassword] = useState('');
+    const [user, setUser] = useState({});
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
-    function handleCredentials(e) {
-        setUserCredentials({...userCredentials, [e.target.name]:e.target.value});
-    }
+    const navigate = useNavigate();
 
-    function handleLogin(e) {
-        e.preventDefault();
-        setError('');
-    
-        signInWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
-        .then((userCredential) => {
-            // Pobierz token dostępu użytkownika
-            const token = userCredential.user.accessToken;
-    
-            // Pobierz dane użytkownika
-            const user = {
-                uid: userCredential.user.uid,
-                email: userCredential.user.email
-                // Możesz dodać inne informacje o użytkowniku, jeśli są dostępne
-            };
-    
-            // Zapisz token oraz dane użytkownika w localStorage
-            localStorage.setItem('token', token);
-            localStorage.setItem('user', JSON.stringify(user));
-    
-            console.log(userCredential.user);
-            navigate('/home');
-        })
-        .catch((error) => {
-            setError(error.message);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            setLoading(false);
         });
-    }
-    
+        return () => unsubscribe();
+    }, []);
+
+    const handleLogin = async () => {
+        setError('')
+        try {
+            const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+            navigate('/home')
+            console.log(user);
+        } catch (error) {
+            setError(error.message);
+        }
+    };
 
     function handlePasswordReset() {
-        const email = prompt('Podaj swój email')
+        const email = prompt('Podaj swój email');
+        if (email === null) {
+            return;
+        }
         sendPasswordResetEmail(auth, email);
-        alert('Link zmiany hasła został wysłany na twojego maila!')
+        alert('Link zmiany hasła został wysłany na twojego maila!');
     }
+    
 
-    return(
+    const handlelogout = async () => {
+        await signOut(auth);
+    };
+
+    return (
+        <>
+            {user && (
+                <Navbar/>
+            )} 
+
         <section id='mainlogin'>
             <div className="login-form">
-                <h3>Witaj!</h3>
-                <label>Email:</label>
-                <input onChange={(e)=>{handleCredentials(e)}} type="text" name="email" />
 
-                <label>Hasło:</label>
-                <input onChange={(e)=>{handleCredentials(e)}} type="password" name="password" />
+                
 
-                <button onClick={(e)=> {handleLogin(e)}} type="submit">Zaloguj</button>
+                {!loading && ( 
+                    <h3>Witaj! <span>{user?.email}</span></h3>
+                )}
+
+                <input onChange={(event) => { setLoginEmail(event.target.value) }} type="text" name="email" placeholder="Email"/>
+                <input onChange={(event) => { setLoginPassword(event.target.value) }} type="password" name="password" placeholder="Hasło"/>
 
                 {
                  error &&
@@ -69,13 +72,19 @@ function LoginForm() {
                 </div>
                 }
 
+                <button onClick={handleLogin} type="submit">Zaloguj</button>
+
                 <div className="backNreset">
-                    <p>Jesteś nowy? <Link to="/registerpage">Załóż konto</Link></p>
+                    <p>Jesteś nowy? <Link to="/registerpage">Utwórz konto</Link></p>
                     <p>Zapomniałeś hasła? <a onClick={handlePasswordReset}>Zmień</a></p>
                 </div>
+
+                {user && (
+                <button onClick={handlelogout}>Wyloguj</button>
+                )}            
             </div>
-            
         </section>
+        </>
     )
 }
 
