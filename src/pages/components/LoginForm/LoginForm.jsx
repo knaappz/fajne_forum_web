@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../../firebase/config";
 import { onAuthStateChanged, signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from "firebase/auth"
-import Navbar from "../Header/Navbar"
+import Navbar from "../header/Navbar"
 
 function LoginForm() {
     const [loginEmail, setLoginEmail] = useState('');

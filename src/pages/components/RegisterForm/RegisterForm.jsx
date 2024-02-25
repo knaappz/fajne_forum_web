@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../../firebase/config";
-import Navbar from "../Header/Navbar"
+import Navbar from "../header/Navbar"
 
 
 function RegisterForm() {

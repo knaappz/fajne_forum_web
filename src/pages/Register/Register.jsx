@@ -1,4 +1,4 @@
-import Footer from '/src/pages/components/Footer/Footer'
+import Footer from '/src/pages/components/footer/Footer'
 import RegisterForm from '/src/pages/components/RegisterForm/RegisterForm'
 
 

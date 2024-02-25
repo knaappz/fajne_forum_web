@@ -1,5 +1,5 @@
 import './style.css'
-import Footer from '/src/pages/components/Footer/Footer'
+import Footer from '/src/pages/components/footer/Footer'
 import LoginForm from '/src/pages/components/LoginForm/LoginForm'
 
 
