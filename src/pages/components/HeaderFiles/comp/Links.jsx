@@ -19,7 +19,7 @@ function Links() {
 
     return (
         <div className="links-navi">
-            <Link to=''> <p>Kategorie</p>  </Link>
+            {/* <Link to=''> <p>Kategorie</p>  </Link> */}
             {/* <Link to=''> <p>Moje opinie</p>  </Link> */}
             {userEmail ? <p>{userEmail}</p> : ''}
             <Link to='/'><p><b>Logowanie</b></p></Link>

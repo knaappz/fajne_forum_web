@@ -8,8 +8,7 @@
 
 .login-form {
     width: 22rem;
-    height: 500px;
-    padding: 0 1rem 0 1rem;
+    padding: 5rem 2rem 5rem 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,7 +34,7 @@ button {
 }
 
 .signout {
-    margin-top: 2rem;
+    background-color: rgb(255, 130, 130);
 }
 
 input {
