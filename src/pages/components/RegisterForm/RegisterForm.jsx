@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../../firebase/config";
+import Navbar from "../Header/Navbar"
+
 
 function RegisterForm() {
     const [registerEmail, setRegisterEmail] = useState('');
@@ -36,6 +38,12 @@ function RegisterForm() {
     };
 
     return (
+        <>
+            {user && (
+                <Navbar/>
+            )} 
+        
+
         <section id='mainlogin'>
             <div className="login-form">
                 {!loading && user?.email && (
@@ -63,6 +71,7 @@ function RegisterForm() {
                 )}      
             </div>
         </section>
+        </>
     )
 }
 
