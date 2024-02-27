@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { auth } from "../../../../firebase/config";
+import { auth } from "../../../firebase/config";
 
 function Links() {
     const [userEmail, setUserEmail] = useState(null);
@@ -8,7 +8,8 @@ function Links() {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
             if (user) {
-                setUserEmail(user.email);
+                const userEmailPrefix = user.email.split('@')[0];
+                setUserEmail(userEmailPrefix);
             } else {
                 setUserEmail(null);
             }
@@ -19,10 +20,12 @@ function Links() {
 
     return (
         <div className="links-navi">
-            {/* <Link to=''> <p>Kategorie</p>  </Link> */}
-            {/* <Link to=''> <p>Moje opinie</p>  </Link> */}
-            {userEmail ? <p>{userEmail}</p> : ''}
-            <Link to='/'><p><b>Logowanie</b></p></Link>
+            {
+                userEmail ? 
+                <>
+                    <Link to='/'><p><b>{userEmail}</b></p></Link>
+                </> : ''
+            }
         </div>
     );
 }

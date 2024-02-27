@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-
 function FajneForumLogo() {
     return(
         <Link to='/home'>

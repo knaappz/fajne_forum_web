@@ -1,5 +1,5 @@
-import FajneForumLogo from './comp/Logo'
-import Links from './comp/Links'
+import FajneForumLogo from '../NavbarLinks/Logo'
+import Links from '../NavbarLinks/Links'
 import './navbar.css'
 
 function Navbar() {

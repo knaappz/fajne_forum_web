@@ -1,15 +1,35 @@
+:root {
+    --ghost: url(https://image-cdn.essentiallysports.com/wp-content/uploads/call-of-duty-modern-warfare-II-ghost-image-1-1110x690.jpg);
+}
+
 #maincontent {
     height: 100vh;
     background-color: #fff;
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    
+    align-items: center;
+    gap: 8rem;
+    margin: 2rem 0 2rem 0;
 }
 
 .row-cards {
     display: flex;
-    justify-content: space-around;
-
+    justify-content: space-between;
+    align-items: center;
+    height: 20rem;
+    width: 80%;
+    gap: 1rem;
 }
+
+.img-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.img-container img {
+    height: 13rem;
+}
+
