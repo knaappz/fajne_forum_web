@@ -1,6 +1,19 @@
 [
-    "https://cdn.oneesports.gg/cdn-data/2022/11/MW2_Ghost_Mask.webp",
-    "https://www.beyondthebookends.com/wp-content/uploads/2021/04/Novel-Ideas-12.png",
-    "https://fwcdn.pl/fph/90/55/659055/853046.3.jpg"
-  ]
-  
+  {
+    "image": "https://cdn.oneesports.gg/cdn-data/2022/11/MW2_Ghost_Mask.webp",
+    "name": "Gry",
+    "desc": "Na liście naszych gier do recenzji mamy między innymi: Call of Duty Modern Warfere, Baldurs Gate 3, Helldivers 2 itd."
+  },
+  {
+    "image": "https://www.beyondthebookends.com/wp-content/uploads/2021/04/Novel-Ideas-12.png",
+    "name": "książki",
+    "desc": "Mnóstwo książek elo elo!!! Hell itd."
+
+  },
+  {
+    "image": "https://fwcdn.pl/fph/90/55/659055/853046.3.jpg",
+    "name": "filmy",
+    "desc": "Zajebiste filmy ocenniaj chwal się!!!"
+
+  }
+]

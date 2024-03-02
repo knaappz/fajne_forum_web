@@ -1,5 +1,5 @@
 #mainlogin {
-    height: 100vh;
+    height: 50rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,6 +18,8 @@
 }
 
 button {
+    cursor:pointer;
+
     height: 2.5rem;
     border: 0;
     background-color: #949494;
@@ -45,7 +47,6 @@ input {
     height: 1rem;
     padding: .8rem 1rem .8rem 1rem;
     box-shadow: 0;
-    cursor:pointer;
     
 }
 

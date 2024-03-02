@@ -1,5 +1,5 @@
 #navigation {
-    background-color: rgb(255, 186, 96);
+    background-color: var(--orange-nav);
     padding: .2rem 5rem .2rem 2rem;
     display: flex;
     justify-content: space-between;
@@ -29,6 +29,7 @@
 }
 
 #navigation a {
+    cursor: pointer;
     text-decoration: none;
     color: #313131;
     display: flex;
@@ -38,6 +39,4 @@
 
 .links-navi p:hover {
     color: black;
-    scale: 1.05;
-    cursor: pointer;
 }

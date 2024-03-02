@@ -1,35 +1,84 @@
 :root {
-    --ghost: url(https://image-cdn.essentiallysports.com/wp-content/uploads/call-of-duty-modern-warfare-II-ghost-image-1-1110x690.jpg);
+    
 }
 
 #maincontent {
-    height: 100vh;
+    height: 120vh;
     background-color: #fff;
-    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8rem;
-    margin: 2rem 0 2rem 0;
+    gap: 2rem;
+    margin: 0rem 0 2rem 0;
 }
 
-.row-cards {
+.welcome {
+    width: 100%;
+    background-color: #313131;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    height: 20rem;
-    width: 80%;
-    gap: 1rem;
+    padding: 2rem 0 2rem 0;
+}
+
+.welcome h1 {
+    font-size: 1.5rem;
+    color: #fff;
 }
 
 .img-container {
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 3rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 2rem 0 2rem 0;
 }
+
+.div-overflow {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    width: 20rem;
+    height: 15rem;
+    border-radius: 20px;
+    transition: .4s;
+}
+
+.div-overflow p {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    bottom: 0px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #313131;
+    background-color: var(--orange-nav);
+    transition: .5s;
+
+}
+
+.div-overflow:hover {
+    scale: 1.05;
+}
+
 
 .img-container img {
-    height: 13rem;
+    border-radius: 20px;
 }
 
+.descMain {
+    width: 62rem;
+    height: 8rem;
+    padding: 2rem;
+    color: #fff;
+    background-color: #313131;
+    border-radius: 20px;
+    text-align: center;
+}

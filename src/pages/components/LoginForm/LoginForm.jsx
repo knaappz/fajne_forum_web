@@ -26,7 +26,7 @@ function LoginForm() {
         setError('')
         try {
             const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-            navigate('/home')
+            navigate('/')
             console.log(user);
         } catch (error) {
             setError(error.message);

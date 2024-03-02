@@ -1,3 +1,7 @@
+:root {
+    --orange-nav: rgb(255, 186, 96);
+}
+
 #nopagesection {
     height: 100vh;
     background-color: #fff;

@@ -8,7 +8,7 @@ function RedirectToLoginPage() {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             if (!user) {
-                navigate('/');
+                navigate('/loginpage');
             }
         });
 

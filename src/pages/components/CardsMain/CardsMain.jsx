@@ -1,26 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CardImages from './CardImages.json';
 
-const Card = ({ image }) => {
+const Card = ({ image, name, desc, onClick }) => {
+  const handleClick = () => {
+    onClick(desc);
+  };
+
   return (
-    
+    <div className="div-overflow" onClick={handleClick}>
       <img src={image} alt="zdjęcie" />
-    
+      <p>{name}</p>
+    </div>
   );
 };
 
-class CardsMain extends React.Component {
-  render() {
-    if (!CardImages || CardImages.length === 0) {
-      return <div>Nie znaleziono zdjęć.</div>;
-    }
+const CardsMain = () => {
+  const [clickedCard, setClickedCard] = useState(CardImages[0].desc);
+  const handleCardClick = (desc) => {
+    setClickedCard(desc);
+  };
 
-    const cards = CardImages.map((zdjecie, index) => (
-      <Card key={index} image={zdjecie} />
-    ));
-
-    return <div className="img-container">{cards}</div>;
+  if (!CardImages || CardImages.length === 0) {
+    return <div>Nie znaleziono zdjęć.</div>;
   }
-}
+
+  const cards = CardImages.map(({ image, name, desc }, index) => (
+    <Card 
+    key={index} 
+    image={image} 
+    name={name} 
+    desc={desc} 
+    onClick={handleCardClick} />
+  ));
+
+  return (
+    <>
+      <div className="welcome">
+        <h1>Wybierz kategorie:</h1>
+        <div className='img-container'>
+          {cards}
+        </div>
+      </div>
+
+      {clickedCard && <div className='descMain'>
+        <p>{clickedCard}</p></div>}
+
+    </>
+  );
+};
 
 export default CardsMain;

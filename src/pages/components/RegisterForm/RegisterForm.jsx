@@ -26,7 +26,7 @@ function RegisterForm() {
         setError('')
         try {
             const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
-            navigate('/home')
+            navigate('/')
             console.log(user);
         } catch (error) {
             setError(error.message);
@@ -54,7 +54,7 @@ function RegisterForm() {
                
                 <button onClick={handleRegister} type="submit">Utwórz</button>
                 <div className="backNreset">
-                    <p>Masz już konto? <Link to="/">Wróć do logowania</Link></p>
+                    <p>Masz już konto? <Link to="/loginpage">Wróć do logowania</Link></p>
                 </div>
             </div>
         </section>

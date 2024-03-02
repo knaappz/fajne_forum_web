@@ -23,9 +23,11 @@ function Links() {
             {
                 userEmail ? 
                 <>
-                    <Link to='/'><p><b>{userEmail}</b></p></Link>
-                </> : ''
+                    <Link to='/loginpage'><p><b>{userEmail}</b></p></Link>
+                </> : <Link to='/loginpage'><p><b>Logowanie</b></p></Link>
+
             }
+
         </div>
     );
 }
