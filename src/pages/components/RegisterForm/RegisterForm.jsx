@@ -38,8 +38,10 @@ function RegisterForm() {
         <section id='mainlogin'>
             <div className="login-form">
                 {!loading && user?.email && (
-                    <h3>Aktualnie zalogowany: <span>{user?.email}</span></h3>
-
+                    <>
+                        <h3>Aktualnie zalogowany:</h3> 
+                        <span>{user?.email}</span>
+                    </>
                 )}
 
                 <h3>Utwórz konto:</h3>

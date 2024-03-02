@@ -7,10 +7,12 @@ const Card = ({ image, name, desc, onClick }) => {
   };
 
   return (
-    <div className="div-overflow" onClick={handleClick}>
-      <img src={image} alt="zdjęcie" />
-      <p>{name}</p>
-    </div>
+    // <a href='#descMain'>
+      <div className="div-overflow" onClick={handleClick}>
+        <img src={image} alt="zdjęcie" />
+        <p>{name}</p>
+      </div>
+    // </a>
   );
 };
 
@@ -42,7 +44,7 @@ const CardsMain = () => {
         </div>
       </div>
 
-      {clickedCard && <div className='descMain'>
+      {clickedCard && <div id='descMain'>
         <p>{clickedCard}</p></div>}
 
     </>
