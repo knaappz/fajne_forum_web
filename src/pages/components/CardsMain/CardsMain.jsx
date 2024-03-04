@@ -1,39 +1,51 @@
 import React, { useState } from 'react';
 import CardImages from './CardImages.json';
+import Games from '../Categories/Games';
+import Films from '../Categories/Films';
+import Books from '../Categories/Books';
+import '../Categories/categories.css';
 
-const Card = ({ image, name, desc, onClick }) => {
+const Card = ({ name, onClick }) => {
   const handleClick = () => {
-    onClick(desc);
+    onClick(name);
   };
 
   return (
-    // <a href='#descMain'>
-      <div className="div-overflow" onClick={handleClick}>
-        <img src={image} alt="zdjęcie" />
-        <p>{name}</p>
-      </div>
-    // </a>
+    <div className="div-overflow" onClick={handleClick}>
+      <p>{name}</p>
+    </div>
   );
 };
 
 const CardsMain = () => {
-  const [clickedCard, setClickedCard] = useState(CardImages[0].desc);
-  const handleCardClick = (desc) => {
-    setClickedCard(desc);
+  const [clickedCategory, setClickedCategory] = useState('gry'); // Domyślnie wyświetlamy komponent gier
+
+  const handleCardClick = (category) => {
+    setClickedCategory(category);
   };
 
-  if (!CardImages || CardImages.length === 0) {
-    return <div>Nie znaleziono zdjęć.</div>;
-  }
-
-  const cards = CardImages.map(({ image, name, desc }, index) => (
+  const cards = CardImages.map(({ name }, index) => (
     <Card 
-    key={index} 
-    image={image} 
-    name={name} 
-    desc={desc} 
-    onClick={handleCardClick} />
+      key={index} 
+      name={name} 
+      onClick={handleCardClick} 
+    />
   ));
+
+  let displayedComponent;
+  switch (clickedCategory) {
+    case 'gry':
+      displayedComponent = <Games />;
+      break;
+    case 'ksiazki':
+      displayedComponent = <Books/>;
+      break;
+    case 'filmy':
+      displayedComponent = <Films />;
+      break;
+    default:
+      displayedComponent = null;
+  }
 
   return (
     <>
@@ -44,9 +56,11 @@ const CardsMain = () => {
         </div>
       </div>
 
-      {clickedCard && <div id='descMain'>
-        <p>{clickedCard}</p></div>}
-
+      {clickedCategory && 
+      <div id='descMain'>
+        {CardImages.find(card => card.name === clickedCategory)?.desc}
+        {displayedComponent}
+      </div>}
     </>
   );
 };
