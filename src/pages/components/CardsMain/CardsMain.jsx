@@ -5,20 +5,20 @@ import Films from '../Categories/Films';
 import Books from '../Categories/Books';
 import '../Categories/categories.css';
 
-const Card = ({ name, onClick }) => {
+const Card = ({ name, onClick, isActive }) => {
   const handleClick = () => {
     onClick(name);
   };
 
   return (
-    <div className="div-overflow" onClick={handleClick}>
+    <div className={`div-overflow ${isActive ? 'active' : ''}`} onClick={handleClick}>
       <p>{name}</p>
     </div>
   );
 };
 
 const CardsMain = () => {
-  const [clickedCategory, setClickedCategory] = useState('gry'); // Domyślnie wyświetlamy komponent gier
+  const [clickedCategory, setClickedCategory] = useState('gry');
 
   const handleCardClick = (category) => {
     setClickedCategory(category);
@@ -28,7 +28,8 @@ const CardsMain = () => {
     <Card 
       key={index} 
       name={name} 
-      onClick={handleCardClick} 
+      onClick={handleCardClick}
+      isActive={clickedCategory === name} // sprawdzamy czy kategoria jest aktywna
     />
   ));
 
@@ -57,10 +58,11 @@ const CardsMain = () => {
       </div>
 
       {clickedCategory && 
-      <div id='descMain'>
-        {CardImages.find(card => card.name === clickedCategory)?.desc}
-        {displayedComponent}
-      </div>}
+        <div id='descMain'>
+          {CardImages.find(card => card.name === clickedCategory)?.desc}
+          {displayedComponent}
+        </div>
+      }
     </>
   );
 };

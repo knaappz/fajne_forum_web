@@ -3,23 +3,23 @@ import React from "react";
 const FilmsList = [
   {
     imageUrl: "https://www.emp-shop.pl/dw/image/v2/BBQV_PRD/on/demandware.static/-/Sites-master-emp/default/dwecdb9636/images/3/1/8/0/318007.jpg?sfrm=png",
-    description: "Opis filmu 1",
+    description: "Widowiskowa opowieść o fascynującym życiu i niesamowitych przygodach wojowniczych ludów Północy, którzy siali postrach w średniowiecznej Europie. Serial przedstawia historię kontynentu z perspektywy tych walecznych najeźdźców i odkrywców.",
   },
   {
     imageUrl: "https://cdns-images.dzcdn.net/images/cover/f66232a2a5c42da86c3fcbbf303099b7/264x264.jpg",
-    description: "Opis filmu 2",
+    description: "Shrek jest brzydkim, zielonym ogrem, mieszkającym samotnie gdzieś na baśniowym bagnie. Pewnego dnia na jego terytorium przybywają postacie z rozmaitych bajek i zakłócają jego spokój. Aby uwolnić się od nieproszonych gości Shrek wyrusza na spotkanie ze sprawcą całego zamieszania - złym lordem Farquaadem.",
   },
   {
     imageUrl: "https://i1.sndcdn.com/artworks-IkhgMZiLJDcYI9CW-bocTZQ-t500x500.jpg",
-    description: "Opis filmu 3",
+    description: "Porywająca historia fizyka J. Roberta Oppenheimera, któremu przypisuje się miano „ojca bomby atomowej” ze względu na jego rolę w Projekcie Manhattan podczas II wojny światowej. To opowieść o najbardziej niszczycielskim dziele ludzkości i jedno z największych kinowych wydarzeń tego roku.",
   },
   {
     imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmXLOVIfeCoBZWnvIbfj_0My5QYihMGh3vgQ&usqp=CAU",
-    description: "Opis filmu 4",
+    description: "Świat Barbie to idealne miejsce, pełne idealnych mieszkańców. No, chyba że ktoś przeżywa akurat kryzys egzystencjalny w całej pełni. Albo jest Kenem.",
   },
 ];
 
-const ImageList = () => {
+function ImageList() {
   return (
     <>
       {FilmsList.map((film, index) => (

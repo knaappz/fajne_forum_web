@@ -10,8 +10,6 @@ function RegisterPage() {
             <RegisterForm/>
             <Footer/>
         </section>
-        
-        
     )
 }
 

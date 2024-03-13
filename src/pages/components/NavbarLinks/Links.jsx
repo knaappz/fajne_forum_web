@@ -27,7 +27,6 @@ function Links() {
                 </> : <Link to='/loginpage'><p><b>Logowanie</b></p></Link>
 
             }
-
         </div>
     );
 }

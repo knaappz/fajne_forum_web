@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../../firebase/config";
 import { onAuthStateChanged, signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from "firebase/auth"
-import Navbar from "../HeaderFiles/Navbar"
 
 function LoginForm() {
     const [loginEmail, setLoginEmail] = useState('');
@@ -10,9 +9,7 @@ function LoginForm() {
     const [user, setUser] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
-
     const navigate = useNavigate();
-
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -42,7 +39,6 @@ function LoginForm() {
         alert('Link zmiany hasła został wysłany na twojego maila!');
     }
     
-
     const handlelogout = async () => {
         await signOut(auth);
     };
@@ -69,7 +65,7 @@ function LoginForm() {
                             </div>
                         }
                     
-                        <button onClick={handleLogin} type="submit">Zaloguj</button>
+                        <button className="login-btn" onClick={handleLogin} type="submit">Zaloguj</button>
                     </>
                 )}
 
@@ -79,7 +75,7 @@ function LoginForm() {
                 </div>
 
                 {user && (
-                <button className="signout" onClick={handlelogout}>Wyloguj</button>
+                <button className="signout login-btn" onClick={handlelogout}>Wyloguj</button>
                 )}            
             </div>
         </section>

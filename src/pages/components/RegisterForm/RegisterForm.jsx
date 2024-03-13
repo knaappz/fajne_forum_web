@@ -2,8 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../../firebase/config";
-import Navbar from "../HeaderFiles/Navbar"
-
 
 function RegisterForm() {
     const [registerEmail, setRegisterEmail] = useState('');
@@ -11,7 +9,6 @@ function RegisterForm() {
     const [user, setUser] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
-
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -54,7 +51,7 @@ function RegisterForm() {
                     </div>
                 }
                
-                <button onClick={handleRegister} type="submit">Utwórz</button>
+                <button className="login-btn" onClick={handleRegister} type="submit">Utwórz</button>
                 <div className="backNreset">
                     <p>Masz już konto? <Link to="/loginpage">Wróć do logowania</Link></p>
                 </div>

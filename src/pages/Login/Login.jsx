@@ -11,8 +11,6 @@ function LoginPage() {
             <LoginForm/>
             <Footer/>
         </section>
-        
-        
     )
 }
 

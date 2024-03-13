@@ -18,17 +18,29 @@
     display: flex;
     justify-content: center;
     border: 1px solid black;
-    border-radius: 2rem;
 }
 
 .rowCards {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: .2rem solid #fff;
+
 }
 
 .ocen {
     width: 10rem;
+    cursor:pointer;
+    padding: 2rem 1rem 2rem 1rem;
+    border: 0;
+    background-color: var(--orange-nav);    
+    color: #313131;
+    border: 0.1rem solid #313131;
+    border-radius: 2rem;
+    font-size: 1.1rem;
+    transition: .2s;
 }
 
 .ocen:hover {
@@ -40,6 +52,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
 
+}
 
+.descDiv p {
+    width: 30rem;
+}
+
+@media (max-width: 652px ) {
+
+.rowCards {
+    flex-direction: column;
+}
+
+#maincontent {
+    height: 150rem;
+}
+    
 }

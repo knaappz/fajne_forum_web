@@ -60,12 +60,8 @@
 
 }
 
-.div-overflow:hover {
-    scale: 1.05;
-}
-
-.img-container img {
-    border-radius: 20px;
+.div-overflow.active {
+    background-color: bisque;
 }
 
 #descMain {

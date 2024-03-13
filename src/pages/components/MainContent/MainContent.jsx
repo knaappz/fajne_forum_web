@@ -6,7 +6,6 @@ function MainContent() {
     return(
         <section id='maincontent'>
             <CardsMain/>
-   
         </section>
     )
 }
